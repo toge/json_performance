@@ -14,6 +14,16 @@ Latest results (December 14, 2022):
 | [**yyjson**](https://github.com/ibireme/yyjson) | **3.45** | **309** | **628** |
 >  1,000,000 iterations on a single core (MacBook Pro A1989)
 
+| Library                                                      | Roundtrip Time (s) | Write (MB/s) | Read (MB/s) |
+| ------------------------------------------------------------ | ------------------ | ------------ | ----------- |
+| [**Glaze**](https://github.com/stephenberry/glaze) | **1.39** | **807** | **933** |
+| [**simdjson (on demand)**](https://github.com/simdjson/simdjson) | **N/A** | **N/A** | **1171** |
+| [**daw_json_link**](https://github.com/beached/daw_json_link) | **2.97** | **365** | **498** |
+| [**RapidJSON**](https://github.com/Tencent/rapidjson) | **2.70** | **466** | **554** |
+| [**json_struct**](https://github.com/jorgen/json_struct) | **4.69** | **233** | **311** |
+| [**nlohmann**](https://github.com/nlohmann/json) | **14.43** | **115** | **79** |
+| [**yyjson**](https://github.com/ibireme/yyjson) | **1.72** | **717** | **1034** |
+>  1,000,000 iterations on a single core (Ryzen 5 5600X)
 
 
 Test object (minified for test):
