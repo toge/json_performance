@@ -5,14 +5,16 @@ Latest results (December 14, 2022):
 
 | Library                                                      | Roundtrip Time (s) | Write (MB/s) | Read (MB/s) |
 | ------------------------------------------------------------ | ------------------ | ------------ | ----------- |
-| [**Glaze**](https://github.com/stephenberry/glaze)           | **1.42**           | **978**      | **732**     |
-| [**simdjson (on demand)**](https://github.com/simdjson/simdjson) | **N/A**            | **N/A**      | **1227**    |
-| [**daw_json_link**](https://github.com/beached/daw_json_link) | **2.79**           | **376**      | **481**     |
-| [**RapidJSON**](https://github.com/Tencent/rapidjson)        | **3.28**           | **302**      | **620**     |
-| [**json_struct**](https://github.com/jorgen/json_struct)     | **4.33**           | **242**      | **336**     |
-| [**nlohmann**](https://github.com/nlohmann/json)             | **16.81**          | **89**       | **73**      |
+| [**Glaze**](https://github.com/stephenberry/glaze) | **2.44** | **467** | **511** |
+| [**simdjson (on demand)**](https://github.com/simdjson/simdjson) | **N/A** | **N/A** | **751** |
+| [**daw_json_link**](https://github.com/beached/daw_json_link) | **4.88** | **219** | **296** |
+| [**RapidJSON**](https://github.com/Tencent/rapidjson) | **6.28** | **211** | **213** |
+| [**json_struct**](https://github.com/jorgen/json_struct) | **7.97** | **142** | **162** |
+| [**nlohmann**](https://github.com/nlohmann/json) | **53.99** | **24** | **27** |
+| [**yyjson**](https://github.com/ibireme/yyjson) | **3.45** | **309** | **628** |
+>  1,000,000 iterations on a single core (MacBook Pro A1989)
 
->  1,000,000 iterations on a single core (MacBook Pro M1)
+
 
 Test object (minified for test):
 
@@ -59,8 +61,9 @@ Hash based solutions avoid this problem and do not suffer performance loss as th
 
 | Library                                                      | Roundtrip Time (s) | Write (MB/s) | Read (MB/s) |
 | ------------------------------------------------------------ | ------------------ | ------------ | ----------- |
-| [**Glaze**](https://github.com/stephenberry/glaze)           | **3.10**           | **1346**     | **404**     |
-| [**simdjson (on demand)**](https://github.com/simdjson/simdjson) | **N/A**            | **N/A**      | **113**     |
+| [**Glaze**](https://github.com/stephenberry/glaze) | **3.48** | **751** | **441** |
+| [**simdjson (on demand)**](https://github.com/simdjson/simdjson) | **N/A** | **N/A** | **76** |
+| [**yyjson**](https://github.com/ibireme/yyjson) | **N/A** | **N/A** | **428** |
 
 # Registration Comparison
 
