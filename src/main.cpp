@@ -1223,14 +1223,14 @@ bool yyjson_read_json(obj_t& obj, std::string const& json)
    auto v3s = yyjson_obj_get(nested_object, "v3s");
    obj.another_object.nested_object.v3s.clear();
    yyjson_arr_foreach(v3s, index, array_size, value) {
-      size_t i = 0;
-      auto& back = obj.another_object.nested_object.v3s.emplace_back();
+      size_t v3_index = 0;
+      auto& v3 = obj.another_object.nested_object.v3s.emplace_back();
 
       size_t index2, array_size2;
       yyjson_val* value2;
 
       yyjson_arr_foreach(value, index2, array_size2, value2) {
-         back[i++] = yyjson_get_real(value2);
+         v3[v3_index++] = yyjson_get_real(value2);
       }
    }
 
