@@ -1364,6 +1364,59 @@ auto yyjson_test()
    return r;
 }
 
+#define YY_PULL(x) { auto x = yyjson_obj_get(root, #x); obj.x.clear(); yyjson_arr_foreach(x, index, array_size, value){ obj.x.emplace_back(yyjson_get_sint(value)); }}
+
+bool yyjson_abc_read_json(abc_t& obj, std::string const& json)
+{
+   auto const doc = yyjson_read(json.c_str(), json.size(), 0);
+   auto const root = yyjson_doc_get_root(doc);
+
+   size_t index, array_size;
+   yyjson_val* value;
+
+   YY_PULL(a); YY_PULL(b); YY_PULL(c);
+   YY_PULL(d); YY_PULL(e); YY_PULL(f);
+   YY_PULL(g); YY_PULL(h); YY_PULL(i);
+   YY_PULL(j); YY_PULL(k); YY_PULL(l);
+   YY_PULL(m); YY_PULL(n); YY_PULL(o);
+   YY_PULL(p); YY_PULL(q); YY_PULL(r);
+   YY_PULL(s); YY_PULL(t); YY_PULL(u);
+   YY_PULL(v); YY_PULL(w); YY_PULL(x);
+   YY_PULL(y); YY_PULL(z);
+
+   yyjson_doc_free(doc);
+
+   return false;
+}
+
+//  TODO: add write abc test for yyjson
+auto yyjson_abc_test()
+{
+   abc_t obj{};
+   
+   std::string buffer = glz::write_json(obj);
+   
+   auto t0 = std::chrono::steady_clock::now();
+   
+   for (size_t i = 0; i < iterations_abc; ++i) {
+      const auto error = yyjson_abc_read_json(obj, buffer);
+      if (error) {
+         std::cerr << "yyjson error" << std::endl;
+      }
+   }
+   
+   auto t1 = std::chrono::steady_clock::now();
+   
+   results r{ "yyjson", "https://github.com/ibireme/yyjson", iterations_abc };
+   
+   r.json_byte_length = buffer.size();
+   r.json_read = std::chrono::duration_cast<std::chrono::microseconds>(t1 - t0).count() * 1e-6;
+   
+   r.print();
+   
+   return r;
+}
+
 static constexpr std::string_view table_header = R"(
 | Library                                                      | Roundtrip Time (s) | Write (MB/s) | Read (MB/s) |
 | ------------------------------------------------------------ | ------------------ | ------------ | ----------- |)";
@@ -1397,6 +1450,7 @@ void abc_test()
    std::vector<results> results;
    results.emplace_back(glaze_abc_test());
    results.emplace_back(simdjson_abc_test());
+   results.emplace_back(yyjson_abc_test());
    
    std::ofstream table{ "json_stats_abc.md" };
    if (table) {
